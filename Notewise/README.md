@@ -10,10 +10,10 @@ The project is strictly separated into independent modules so each member can de
 
 | Member | Role | Workspace Directory | Scope |
 | :--- | :--- | :--- | :--- |
-| **Member 1** | **Backend + AI Pipeline Lead** | [`backend/`](file:///d:/clg%20files/final%20year%20project/Notewise/backend) | Express REST APIs, job orchestration, audio chunking, Whisper transcription, notes prompt, deployment |
-| **Member 2** | **Frontend Lead** | [`frontend/`](file:///d:/clg%20files/final%20year%20project/Notewise/frontend) | React UI, notes/cheatsheet/mindmap/transcript display, Q&A chat, PDF export |
-| **Member 3** | **Audio Processing Owner** | [`audio-service/`](file:///d:/clg%20files/final%20year%20project/Notewise/audio-service) | Python FastAPI noise-reduction microservice (`noisereduce`), audio testing, sample collection |
-| **Member 4** | **Database + Prompts + QA Owner** | [`database/`](file:///d:/clg%20files/final%20year%20project/Notewise/database), [`evaluation/`](file:///d:/clg%20files/final%20year%20project/Notewise/evaluation), [`tests/`](file:///d:/clg%20files/final%20year%20project/Notewise/tests) | Postgres schema & migrations, cheatsheet/mindmap prompts, WER benchmarking, end-to-end testing |
+| **PRATIK** | **Backend + AI Pipeline Lead** | [`backend/`](file:///d:/clg%20files/final%20year%20project/Notewise/backend) | Express REST APIs, job orchestration, audio chunking, Whisper transcription, notes prompt, deployment |
+| **BIPRAJIT** | **Frontend Lead** | [`frontend/`](file:///d:/clg%20files/final%20year%20project/Notewise/frontend) | React UI, notes/cheatsheet/mindmap/transcript display, Q&A chat, PDF export |
+| **SANKET** | **Audio Processing Owner** | [`audio-service/`](file:///d:/clg%20files/final%20year%20project/Notewise/audio-service) | Python FastAPI noise-reduction microservice (`noisereduce`), audio testing, sample collection |
+| **SAMIR** | **Database + Prompts + QA Owner** | [`database/`](file:///d:/clg%20files/final%20year%20project/Notewise/database), [`evaluation/`](file:///d:/clg%20files/final%20year%20project/Notewise/evaluation), [`tests/`](file:///d:/clg%20files/final%20year%20project/Notewise/tests) | Postgres schema & migrations, cheatsheet/mindmap prompts, WER benchmarking, end-to-end testing |
 
 ---
 
