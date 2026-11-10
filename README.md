@@ -157,7 +157,7 @@ This project is being developed by a team of four B.Tech students.
 
 | Member | Role | Responsibilities |
 |---|---|---|
-| **Bipra** | Frontend & UI Lead | React interface, audio upload screen, processing status, notes display, mindmap visualization, Q&A interface and PDF export. |
+| **Biprajit** | Frontend & UI Lead | React interface, audio upload screen, processing status, notes display, mindmap visualization, Q&A interface and PDF export. |
 | **Sanket** | Audio Processing Lead | Audio cleaning, noise reduction, Python FastAPI microservice, speech-to-text integration and audio testing. |
 | **Samir** | Database, Prompt Engineering & QA | PostgreSQL schema, job-status tracking, cheatsheet and mindmap prompts, prompt optimization and end-to-end testing. |
 | **Pratik** | Backend & Integration Lead | Node.js, Express APIs, backend architecture, notes-generation integration, service communication and complete pipeline integration. |
