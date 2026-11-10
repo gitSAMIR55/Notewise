@@ -30,6 +30,7 @@ The system aims to reduce manual note-making effort, improve accessibility to le
 - Create hierarchical mindmaps representing topics and subtopics.
 - Provide an AI-powered question-answering interface based on lecture content.
 - Allow students to view and export their generated study materials.
+- Reduce the time and effort required for manual note preparation.
 
 ---
 
@@ -66,61 +67,66 @@ The application follows an automated audio-to-study-material pipeline.
 
 ## 🏗️ System Architecture
 
+Notewise follows a modular architecture consisting of a React frontend, Node.js backend, Python-based audio processing service and PostgreSQL database.
+
 ```text
-              STUDENT
-                 |
-                 v
-          AUDIO UPLOAD
-                 |
-                 v
-        NODE.JS + EXPRESS
-          (Backend Server)
-                 |
-                 v
-        AUDIO PROCESSING
-          Python FastAPI
-                 |
-          Noise Reduction
-                 |
-                 v
-          SPEECH-TO-TEXT
-          Whisper / STT
-                 |
-                 v
-          LECTURE TRANSCRIPT
-                 |
-                 v
-        LARGE LANGUAGE MODEL
-          (LLM + Prompts)
-                 |
-       +---------+----------+
-       |         |          |
-       v         v          v
-     NOTES   CHEATSHEET   MINDMAP
-       |         |          |
-       +---------+----------+
-                 |
-                 v
-          LECTURE-BASED Q&A
-                 |
-                 v
-           POSTGRESQL
-                 |
-                 v
-           REACT FRONTEND
-                 |
-                 v
-          STUDENT DASHBOARD
-                 |
-                 v
-              PDF EXPORT
+                 STUDENT
+                    |
+                    v
+              REACT FRONTEND
+                    |
+                    v
+             NODE.JS + EXPRESS
+               BACKEND API
+                    |
+             AUDIO UPLOAD
+                    |
+                    v
+             PYTHON FASTAPI
+              AUDIO SERVICE
+                    |
+              NOISE REDUCTION
+                    |
+                    v
+              SPEECH-TO-TEXT
+               WHISPER / STT
+                    |
+                    v
+             LECTURE TRANSCRIPT
+                    |
+                    v
+            LARGE LANGUAGE MODEL
+              (LLM + PROMPTS)
+                    |
+          +---------+----------+
+          |         |          |
+          v         v          v
+        NOTES   CHEATSHEET   MINDMAP
+          |         |          |
+          +---------+----------+
+                    |
+                    v
+             LECTURE-BASED Q&A
+                (RAG-BASED)
+                    |
+                    v
+               POSTGRESQL
+                    |
+                    v
+              STUDENT DASHBOARD
+                    |
+                    v
+                 PDF EXPORT
 ```
+
+*Note: The final architecture and service communication flow may be refined during implementation.*
 
 ---
 
 ## 🛠️ Technology Stack
 
 ### Frontend
+
 - React.js
 - Tailwind CSS
 - JavaScript
@@ -128,26 +134,38 @@ The application follows an automated audio-to-study-material pipeline.
 - jsPDF (PDF export)
 
 ### Backend
+
 - Node.js
 - Express.js
 - REST APIs
 
 ### Database
+
 - PostgreSQL
 
 ### AI & Audio Processing
+
 - Python
 - FastAPI
 - noisereduce (background noise reduction)
 - OpenAI Whisper API / local whisper.cpp (speech-to-text)
 - OpenAI GPT-4o-mini / Google Gemini Flash (LLM-based content generation)
 
+### AI Techniques
+
+- Prompt Engineering
+- Large Language Models (LLMs)
+- Speech Recognition
+- Retrieval-Augmented Generation (RAG)
+- Structured Output Generation
+
 ### Deployment
+
 - Vercel (Frontend)
 - Render / Railway (Backend)
 - Supabase / Neon (PostgreSQL)
 
-*Note: The final API providers and deployment platforms will be selected during implementation.*
+*Note: The final AI API providers, deployment platforms and supporting libraries will be selected during implementation.*
 
 ---
 
@@ -198,6 +216,44 @@ The project also aims to evaluate and improve prompt quality by testing output a
 
 ---
 
+## 🔍 AI Architecture & Retrieval-Augmented Generation (RAG)
+
+Notewise uses pretrained AI models for speech recognition and educational content generation.
+
+The AI pipeline consists of the following stages:
+
+### 1. Speech Recognition
+
+A pretrained speech-to-text model such as Whisper converts classroom lecture recordings into textual transcripts.
+
+### 2. LLM-Based Content Generation
+
+The generated transcript is passed to a Large Language Model (LLM) using task-specific prompts to produce:
+
+- Structured lecture notes.
+- Important concepts and definitions.
+- Revision cheatsheets.
+- Hierarchical mindmaps.
+
+### 3. Lecture-Based Question Answering
+
+The system aims to use Retrieval-Augmented Generation (RAG) to retrieve relevant sections from the uploaded lecture transcript before generating answers.
+
+The proposed RAG workflow includes:
+
+1. Dividing the lecture transcript into smaller text chunks.
+2. Generating vector embeddings for the text chunks.
+3. Storing the embeddings in a searchable vector database or supported vector storage system.
+4. Retrieving relevant transcript sections according to the student's question.
+5. Providing the retrieved context to the LLM.
+6. Generating an answer based on the retrieved lecture information.
+
+This approach aims to keep answers relevant to the uploaded lecture and reduce unsupported AI-generated information.
+
+*Note: RAG is a planned implementation approach and will be finalized during development.*
+
+---
+
 ## 🔄 Job Processing Workflow
 
 Each uploaded lecture moves through different processing stages.
@@ -213,6 +269,73 @@ The application tracks these states so that students can monitor the progress of
 
 ---
 
+## 🔐 Security & Data Management
+
+Notewise aims to maintain the security and integrity of uploaded lecture recordings and generated academic materials.
+
+Key security considerations include:
+
+- Validate uploaded audio files for supported formats and file size.
+- Implement secure user authentication and authorization.
+- Store lecture recordings and generated materials securely.
+- Prevent unauthorized access to individual users' lecture data.
+- Validate API requests and handle errors safely.
+- Avoid exposing API keys and sensitive credentials in frontend code or public repositories.
+- Ensure that students can access only their own lecture materials.
+
+---
+
+## 🧪 Testing & Evaluation Methodology
+
+The performance of Notewise will be evaluated through functional testing and AI output quality assessment.
+
+| Evaluation Parameter | Description |
+|---|---|
+| Transcription Accuracy | Evaluate speech-to-text performance using Word Error Rate (WER). |
+| Notes Quality | Check generated notes for completeness, clarity and factual correctness. |
+| Cheatsheet Relevance | Evaluate whether important lecture concepts are captured accurately. |
+| Mindmap Accuracy | Verify the logical organization of topics and subtopics. |
+| Q&A Reliability | Evaluate answer relevance and faithfulness to the uploaded lecture transcript. |
+| Processing Time | Measure the time required to process recordings and generate study materials. |
+| System Reliability | Test error handling, file uploads and processing status management. |
+
+The system will be tested using different lecture recordings, including recordings with varying durations, speaking speeds and background noise levels.
+
+The evaluation results will be used to identify areas for improvement in transcription quality, prompt design and overall system performance.
+
+---
+
+## ⚠️ Limitations
+
+Although Notewise aims to automate lecture note preparation, certain limitations may affect its performance:
+
+- Transcription accuracy may decrease when recordings contain heavy background noise or unclear speech.
+- AI-generated notes may occasionally omit important information or misinterpret technical concepts.
+- The quality of generated content depends on transcript accuracy and the capabilities of the selected language model.
+- Processing time may increase for lengthy lecture recordings.
+- Internet connectivity and third-party API availability may affect certain AI functionalities.
+- Lecture-based question answering is limited by the information available in the uploaded lecture transcript.
+- Large lecture recordings may require additional processing time and computational resources.
+
+These limitations will be considered during testing and future development.
+
+---
+
+## 📈 Expected Outcomes
+
+The expected outcomes of Notewise include:
+
+- Automated conversion of lecture recordings into readable transcripts.
+- Reduced manual effort in preparing academic notes.
+- Structured and easy-to-understand lecture notes.
+- Concise revision cheatsheets for examination preparation.
+- Visual representation of topics through hierarchical mindmaps.
+- Context-aware question answering based on lecture material.
+- Downloadable study resources for offline learning and revision.
+- An integrated platform for managing and accessing lecture-based study materials.
+
+---
+
 ## 🔮 Future Enhancements
 
 Potential future improvements include:
@@ -225,6 +348,7 @@ Potential future improvements include:
 - Real-time lecture transcription.
 - Personalized revision recommendations.
 - Improved handling of lengthy lecture recordings.
+- Integration with learning management systems (LMS).
 
 ---
 
