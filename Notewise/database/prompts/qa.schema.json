@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Notewise Grounded Q&A Schema",
+  "description": "Schema for grounded Q&A responses and refusals",
+  "type": "object",
+  "required": ["question", "answer", "grounded"],
+  "additionalProperties": false,
+  "properties": {
+    "question": {
+      "type": "string"
+    },
+    "answer": {
+      "type": "string"
+    },
+    "grounded": {
+      "type": "boolean"
+    }
+  }
+}

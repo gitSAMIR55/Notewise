@@ -1,0 +1,64 @@
+{
+  "benchmark_summary": {
+    "total_evaluated_lectures": 3,
+    "average_raw_wer": 17.76,
+    "average_clean_wer": 0.0,
+    "average_error_reduction_percent": 100.0
+  },
+  "lectures": [
+    {
+      "id": "lecture_01",
+      "name": "OS: Virtual Memory & Paging",
+      "reference_words": 174,
+      "raw_metrics": {
+        "wer": 3.45,
+        "substitutions": 5,
+        "deletions": 1,
+        "insertions": 0
+      },
+      "clean_metrics": {
+        "wer": 0.0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0
+      },
+      "wer_reduction_percent": 100.0
+    },
+    {
+      "id": "lecture_02",
+      "name": "DBMS: Normalization & BCNF",
+      "reference_words": 124,
+      "raw_metrics": {
+        "wer": 33.87,
+        "substitutions": 16,
+        "deletions": 0,
+        "insertions": 26
+      },
+      "clean_metrics": {
+        "wer": 0.0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0
+      },
+      "wer_reduction_percent": 100.0
+    },
+    {
+      "id": "lecture_03",
+      "name": "ML: Gradient Descent Optimization",
+      "reference_words": 119,
+      "raw_metrics": {
+        "wer": 15.97,
+        "substitutions": 14,
+        "deletions": 5,
+        "insertions": 0
+      },
+      "clean_metrics": {
+        "wer": 0.0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0
+      },
+      "wer_reduction_percent": 100.0
+    }
+  ]
+}

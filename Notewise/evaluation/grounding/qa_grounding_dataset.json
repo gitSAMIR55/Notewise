@@ -1,0 +1,166 @@
+{
+  "benchmark_name": "Notewise Grounded Q&A Evaluation Suite (20 Pairs)",
+  "qa_lead": "Samir (Member 4)",
+  "test_pairs": [
+    {
+      "id": "qa_01",
+      "lecture": "OS: Virtual Memory & Paging",
+      "question": "What is the primary motivation for virtual memory according to the lecture?",
+      "expected_grounded": true,
+      "transcript_evidence": "Why do we need virtual memory? In early computing, programs were constrained by physical RAM size. Virtual memory separates user logical memory from physical memory. Each process is given an illusion of a contiguous address space.",
+      "expected_answer_keywords": ["physical RAM", "separates user logical", "illusion", "contiguous address space"]
+    },
+    {
+      "id": "qa_02",
+      "lecture": "OS: Virtual Memory & Paging",
+      "question": "What is the typical size of a page mentioned in the lecture?",
+      "expected_grounded": true,
+      "transcript_evidence": "In paging, the logical address space is divided into fixed-size blocks called pages, typically 4 kilobytes.",
+      "expected_answer_keywords": ["4 kilobytes", "4KB"]
+    },
+    {
+      "id": "qa_03",
+      "lecture": "OS: Virtual Memory & Paging",
+      "question": "What is the difference between a page and a frame?",
+      "expected_grounded": true,
+      "transcript_evidence": "logical address space is divided into fixed-size blocks called pages... Physical memory is divided into fixed-size blocks of the identical size called frames.",
+      "expected_answer_keywords": ["pages", "logical", "frames", "physical"]
+    },
+    {
+      "id": "qa_04",
+      "lecture": "OS: Virtual Memory & Paging",
+      "question": "Which hardware unit performs the translation from logical page numbers to physical frame numbers?",
+      "expected_grounded": true,
+      "transcript_evidence": "The Memory Management Unit uses a page table to translate logical page numbers to physical frame numbers.",
+      "expected_answer_keywords": ["Memory Management Unit", "MMU"]
+    },
+    {
+      "id": "qa_05",
+      "lecture": "OS: Virtual Memory & Paging",
+      "question": "When does a page fault occur?",
+      "expected_grounded": true,
+      "transcript_evidence": "When the processor accesses a page not currently present in RAM, a page fault occurs.",
+      "expected_answer_keywords": ["not currently present in RAM", "accesses a page"]
+    },
+    {
+      "id": "qa_06",
+      "lecture": "OS: Virtual Memory & Paging",
+      "question": "What steps does the OS take to handle a page fault?",
+      "expected_grounded": true,
+      "transcript_evidence": "The OS traps to the kernel, fetches the page from backing store into a free frame, updates the page table valid-invalid bit, and restarts the instruction.",
+      "expected_answer_keywords": ["traps to kernel", "backing store", "free frame", "updates valid-invalid bit", "restarts the instruction"]
+    },
+    {
+      "id": "qa_07",
+      "lecture": "OS: Virtual Memory & Paging",
+      "question": "Why is page fault handling orders of magnitude slower than memory access?",
+      "expected_grounded": true,
+      "transcript_evidence": "page fault handling involves disk I/O, which is orders of magnitude slower than memory access.",
+      "expected_answer_keywords": ["disk I/O", "disk"]
+    },
+    {
+      "id": "qa_08",
+      "lecture": "DBMS: Normalization & BCNF",
+      "question": "What are the primary anomalies eliminated by database normalization?",
+      "expected_grounded": true,
+      "transcript_evidence": "To eliminate insertion, deletion, and update anomalies and minimize redundant data storage.",
+      "expected_answer_keywords": ["insertion", "deletion", "update anomalies", "redundant data"]
+    },
+    {
+      "id": "qa_09",
+      "lecture": "DBMS: Normalization & BCNF",
+      "question": "What is the requirement for a relation to be in First Normal Form (1NF)?",
+      "expected_grounded": true,
+      "transcript_evidence": "In First Normal Form or 1NF, every column contains atomic values.",
+      "expected_answer_keywords": ["atomic values"]
+    },
+    {
+      "id": "qa_10",
+      "lecture": "DBMS: Normalization & BCNF",
+      "question": "What dependency does Second Normal Form (2NF) eliminate?",
+      "expected_grounded": true,
+      "transcript_evidence": "In Second Normal Form or 2NF, we are already in 1NF and there is no partial dependency; non-prime attributes must depend on the whole candidate key.",
+      "expected_answer_keywords": ["partial dependency", "whole candidate key"]
+    },
+    {
+      "id": "qa_11",
+      "lecture": "DBMS: Normalization & BCNF",
+      "question": "What is the condition for Third Normal Form (3NF)?",
+      "expected_grounded": true,
+      "transcript_evidence": "In Third Normal Form or 3NF, for every functional dependency X determines Y, either X is a superkey or Y is a prime attribute.",
+      "expected_answer_keywords": ["X is a superkey", "Y is a prime attribute"]
+    },
+    {
+      "id": "qa_12",
+      "lecture": "DBMS: Normalization & BCNF",
+      "question": "How is Boyce-Codd Normal Form (BCNF) stricter than 3NF?",
+      "expected_grounded": true,
+      "transcript_evidence": "BCNF is stricter: for every non-trivial functional dependency X determines Y, X MUST be a superkey. Every relation in BCNF is in 3NF, but not every 3NF relation is in BCNF.",
+      "expected_answer_keywords": ["X MUST be a superkey"]
+    },
+    {
+      "id": "qa_13",
+      "lecture": "ML: Gradient Descent",
+      "question": "What does the learning rate parameter alpha control in gradient descent?",
+      "expected_grounded": true,
+      "transcript_evidence": "The learning rate, denoted by alpha, controls the step size taken in parameter space.",
+      "expected_answer_keywords": ["step size", "parameter space"]
+    },
+    {
+      "id": "qa_14",
+      "lecture": "ML: Gradient Descent",
+      "question": "What advantage does stochastic gradient descent provide over batch gradient descent?",
+      "expected_grounded": true,
+      "transcript_evidence": "In stochastic gradient descent, a single random training sample is used per step, introducing stochastic noise that helps escape saddle points.",
+      "expected_answer_keywords": ["single random training sample", "stochastic noise", "escape saddle points"]
+    },
+    {
+      "id": "qa_15",
+      "lecture": "OS: Virtual Memory & Paging",
+      "question": "Who is the Prime Minister of the United Kingdom?",
+      "expected_grounded": false,
+      "transcript_evidence": null,
+      "expected_refusal": "This topic was not covered in the lecture."
+    },
+    {
+      "id": "qa_16",
+      "lecture": "OS: Virtual Memory & Paging",
+      "question": "How do you implement quicksort in Python?",
+      "expected_grounded": false,
+      "transcript_evidence": null,
+      "expected_refusal": "This topic was not covered in the lecture."
+    },
+    {
+      "id": "qa_17",
+      "lecture": "DBMS: Normalization & BCNF",
+      "question": "What is the capital city of Australia?",
+      "expected_grounded": false,
+      "transcript_evidence": null,
+      "expected_refusal": "This topic was not covered in the lecture."
+    },
+    {
+      "id": "qa_18",
+      "lecture": "DBMS: Normalization & BCNF",
+      "question": "Can you recommend a recipe for chocolate chip cookies?",
+      "expected_grounded": false,
+      "transcript_evidence": null,
+      "expected_refusal": "This topic was not covered in the lecture."
+    },
+    {
+      "id": "qa_19",
+      "lecture": "ML: Gradient Descent",
+      "question": "What is the distance between the Earth and the Moon in kilometers?",
+      "expected_grounded": false,
+      "transcript_evidence": null,
+      "expected_refusal": "This topic was not covered in the lecture."
+    },
+    {
+      "id": "qa_20",
+      "lecture": "ML: Gradient Descent",
+      "question": "Explain quantum entanglement and Bell inequalities.",
+      "expected_grounded": false,
+      "transcript_evidence": null,
+      "expected_refusal": "This topic was not covered in the lecture."
+    }
+  ]
+}
